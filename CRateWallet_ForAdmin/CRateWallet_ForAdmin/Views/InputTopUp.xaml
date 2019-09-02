@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:binding="clr-namespace:CRateWallet_ForAdmin.ViewModels"
+             xmlns:ren="clr-namespace:CRateWallet_ForAdmin.CustomRenderer"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="CRateWallet_ForAdmin.Views.InputTopUp">
+    <ContentPage.BindingContext>
+        <binding:PaymentViewModels/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="15" HorizontalOptions="FillAndExpand">
+                <Image Source="back" HorizontalOptions="StartAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoBackPage}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="เติมเงิน" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </Grid>
+            <Image Source="qr" HorizontalOptions="CenterAndExpand" HeightRequest="100" WidthRequest="100"/>
+            <Label Text="ใส่จำนวนเงิน" HorizontalOptions="CenterAndExpand" FontSize="36"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ren:BlankEntry Grid.Column="0" Text="{Binding TopUP}" FontSize="48" HorizontalTextAlignment="End" Keyboard="Numeric" MaxLength="10" HorizontalOptions="EndAndExpand" VerticalOptions="StartAndExpand" WidthRequest="250"/>
+                <Label Grid.Column="2" Text="THB" FontSize="14" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Margin="0,23,0,0"/>
+            </Grid>
+            <StackLayout VerticalOptions="EndAndExpand" Margin="10">
+                <Button Text="ตกลง" Font="24" BackgroundColor="Orange" Margin="10" CornerRadius="5" TextColor="White" Command="{Binding GoToHomePage}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
